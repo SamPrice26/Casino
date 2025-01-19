@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Casino</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+    <header id="login-page-header">
+        <h1>Login</h1>
+    </header>
+
+    <main id="login-page-main">
+        <form id="login-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <button type="submit">Login</button>
+        </form>
+        <p id="error-message" style="color: red; display: none;">Invalid login credentials. Please try again.</p>
+    </main>
+
+    <footer id="login-footer">
+        <p>© 2025 Casino, All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // Handle form submission
+        document.getElementById('login-form').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent default form submission behavior
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (!username || !password) {
+                alert('Both fields are required');
+                return;
+            }
+
+            // Send login request
+            axios.post('http://127.0.0.1:5000/login', { username, password })
+                .then(response => {
+                    // If successful login, store user_id in localStorage and redirect
+                    const userId = response.data.user_id;
+                    localStorage.setItem('user_id', userId); // Save user ID to local storage
+                    window.location.href = 'game.html'; // Redirect to the game page
+                })
+                .catch(error => {
+                    console.error(error);
+                    if (error.response && error.response.data) {
+                        // Display custom error message from the backend
+                        const errorMessage = error.response.data.message || 'Invalid login credentials. Please try again.';
+                        document.getElementById('error-message').textContent = errorMessage;
+                    } else {
+                        // Handle unexpected errors
+                        document.getElementById('error-message').textContent = 'An unexpected error occurred. Please try again later.';
+                    }
+                    document.getElementById('error-message').style.display = 'block'; // Show error message
+                });
+        });
+    </script>
+</body>
+</html>

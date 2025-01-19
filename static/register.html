@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+    <!-- Register Page Header -->
+    <div id="register-page-header">
+        <h1>Register</h1>
+    </div>
+
+    <!-- Register Form Section -->
+    <div id="register-page-main">
+        <form id="register-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <button type="submit">Register</button>
+        </form>
+        <div id="loading" style="display:none;">Loading...</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        const registerForm = document.getElementById('register-form');
+        registerForm.addEventListener('submit', function(e) {
+            e.preventDefault();  // Prevent default form submission
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (!username || !password) {
+                alert('Please fill in both username and password');
+                return;
+            }
+
+            document.getElementById('loading').style.display = 'block';
+
+            registerUser(username, password);
+        });
+
+        function registerUser(username, password) {
+            axios.post('http://127.0.0.1:5000/register', { username, password })
+                .then(response => {
+                    document.getElementById('loading').style.display = 'none';
+                    alert('Registration Successful!');
+                    window.location.href = "login.html";
+                    registerForm.reset();
+                })
+                .catch(error => {
+                    document.getElementById('loading').style.display = 'none';
+                    alert(error.response?.data?.message || 'Registration Failed');
+                });
+        }
+    </script>
+
+</body>
+</html>

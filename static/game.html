@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino Game</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <main id="game-page">
+        <!-- Balance Section -->
+        <div id="balance-container">
+            <div id="balance-box">
+                <h3>Your Current Balance:</h3>
+                <span id="user-balance">Loading...</span>
+            </div>
+            <input type="number" id="bet-amount" placeholder="Enter bet amount">
+            
+            <!-- Moved spin result here -->
+            <div id="spin-result-box">
+                <h3>Spin Result:</h3>
+                <div id="mini-slots">
+                    <img src="/static/casinoimg/banana.png" class="mini-slot" alt="Banana">
+                    <img src="/static/casinoimg/cherry.png" class="mini-slot" alt="Cherry">
+                    <img src="/static/casinoimg/diamond.png" class="mini-slot" alt="Diamond">
+                </div>
+                <p id="result">No result yet</p>
+            </div>
+        </div>
+
+        <!-- Logout Button -->
+        <div id="logout-button-container" style="text-align: center; margin-top: 20px;">
+            <button id="logout-btn">Logout</button>
+        </div>
+
+        <!-- Slot Reels Section -->
+        <div id="slot-results">
+            <img src="/static/casinoimg/banana.png" class="slot" alt="Banana">
+            <img src="/static/casinoimg/cherry.png" class="slot" alt="Cherry">
+            <img src="/static/casinoimg/diamond.png" class="slot" alt="Diamond">
+        </div>
+
+        <!-- Spin Button Section -->
+        <div id="spin-button-container">
+            <img src="/static/casinoimg/button.png" alt="Spin Button" id="spin-img">
+        </div>
+    </main>
+
+    <footer id="game-footer">
+        <p>© 2025 Casino, All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/static/app.js"></script>
+</body>
+</html>

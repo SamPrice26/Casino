@@ -1,0 +1,426 @@
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #000;
+    color: white;
+    height: 100vh;
+}
+
+/* Home Page */
+#home-page-header {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#home-page-header h1 {
+    font-size: 3rem;
+    color: #DA70D6; /* Purple color for the title */
+    text-shadow: 0 0 10px rgba(218, 112, 214, 1);
+}
+
+#home-page-header nav {
+    margin-top: 20px;
+}
+
+#home-page-header .btn {
+    text-decoration: none;
+    background-color: #000;
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 25px;
+    margin: 0 20px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(218, 112, 214, 0.8);
+}
+
+#home-page-header .btn:hover {
+    background-color: #DA70D6;
+    box-shadow: 0 0 15px rgba(218, 112, 214, 1);
+}
+
+/* Main Home Page */
+#home-page-main {
+    text-align: center;
+    margin-top: 100px;
+}
+
+#home-page-main h2 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+#home-page-main p {
+    font-size: 1.5rem;
+    color: #ddd;
+    margin-bottom: 50px;
+}
+
+/* Login / Register Page Header */
+#login-page-header, #register-page-header {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#login-page-header h1, #register-page-header h1 {
+    font-size: 3rem;
+    color: #DA70D6; /* Purple color for title */
+    text-shadow: 0 0 10px rgba(218, 112, 214, 1);
+}
+
+/* Login / Register Form */
+#login-page-main, #register-page-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    flex-direction: column;
+}
+
+#login-form, #register-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 350px;
+}
+
+#login-form label, #register-form label {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    color: white;
+}
+
+#login-form input, #register-form input {
+    padding: 12px;
+    font-size: 1.2rem;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 25px;
+    border: 2px solid #DA70D6;
+    background-color: #333;
+    color: white;
+    outline: none;
+    box-shadow: 0 0 5px rgba(218, 112, 214, 0.6);
+}
+
+#login-form input:focus, #register-form input:focus {
+    box-shadow: 0 0 10px rgba(218, 112, 214, 1);
+}
+
+#login-form button, #register-form button {
+    background-color: #DA70D6;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 25px;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(218, 112, 214, 0.8);
+}
+
+#login-form button:hover, #register-form button:hover {
+    background-color: #8B008B;
+    box-shadow: 0 0 20px rgba(218, 112, 214, 1);
+}
+
+/* Loading message */
+#loading {
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+/* Pop-up Styling */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none; /* Initially hidden */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's on top of everything */
+    animation: popupIn 1s ease-out;  
+}
+
+.popup.visible {
+    display: flex; /* Show when 'visible' class is added */
+}
+
+.popup-content {
+    text-align: center;
+    background-color: #000;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(218, 112, 214, 0.8);
+}
+
+.popup h1 {
+    color: #DA70D6;
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.popup p {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #DA70D6;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 25px;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(218, 112, 214, 0.8);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #8B008B;
+    box-shadow: 0 0 20px rgba(218, 112, 214, 1);
+}
+
+/* Add animation for the pop-up to fade in */
+@keyframes popupIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Coins Falling Animation */
+.coins-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999; /* Ensure coins fall above everything */
+    pointer-events: none;
+}
+
+.coin {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: gold;
+    border-radius: 50%;
+    opacity: 0.9;
+    animation: fall 3s infinite;
+}
+
+@keyframes fall {
+    from {
+        top: -50px; /* Start above the screen */
+    }
+    to {
+        top: 100vh; /* Fall to the bottom of the screen */
+    }
+}
+
+/* Game Page */
+#game-page {
+    background-image: url('/static/casinoimg/slotmachine.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+    padding-top: 20px; 
+}
+
+/* Balance Section */
+#balance-container {
+    position: fixed;
+    top: 10%;
+    right: 5%;
+    text-align: center;
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 250px;
+}
+
+#balance-box {
+    background-color: #000;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(128, 0, 128, 0.7);
+}
+
+input#bet-amount {
+    padding: 10px;
+    font-size: 1.2rem;
+    width: 200px;
+    border-radius: 5px;
+    margin-top: 10px;
+    background-color: white;
+    border: 2px solid #DA70D6;
+}
+
+/* Spin Result Box Styles */
+#spin-result-box {
+    background-color: #000;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(128, 0, 128, 0.7);
+    margin-top: 10px;
+}
+
+#mini-slots {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+.mini-slot {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+#result {
+    margin-top: 10px;
+    font-size: 1.1rem;
+}
+
+/* Slot Reels Section */
+#slot-results {
+    display: flex;
+    justify-content: flex-start;  /* Align to the left */
+    margin-top: 10%; /* Adjust as needed */
+    margin-bottom: 0; 
+    overflow: hidden;
+    height: 100px;
+    margin-left: -15px;
+    gap: 10px
+}
+
+.slot {
+    width: 65px;
+    height: 60px;
+    margin: 10 px;
+}
+
+/* Spin Button Section */
+#spin-button-container {
+    position: absolute;
+    bottom: 5vh; /* Adjust the vertical position */
+    left: 49%; /* Center it horizontally */
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+
+#spin-img {
+    width: 300px; /* image size */
+    height: auto;
+    transition: transform 0.2s ease, filter 0.3s ease; /* smooth transition for glow */
+}
+
+#spin-img:hover {
+    transform: scale(0.95); /* Scale down the image when hovered */
+    filter: drop-shadow(0 0 25px rgba(255, 232, 29)); /* glowing effect */
+}
+
+#spin-img:active {
+    transform: scale(0.95); /* Scale more down when clicked */
+    filter: drop-shadow(0 0 50px rgb(255, 232, 29)); /* Stronger glow when clicked */
+}
+
+/* Spin Result Section */
+#slot-result {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#logout-button-container {
+    position: fixed; /* Fixes the button's position */
+    bottom: 20px; /* 20px from the bottom */
+    left: 20px; /* 20px from the right */
+    z-index: 1000; /* Ensures it's on top of other elements */
+}
+
+#logout-btn {
+    background-color: black; /* Black background color */
+    color: white; /* White text color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#logout-btn:hover {
+    background-color: #333; /* Darker shade of black on hover */
+}
+
+
+
+/* Footer */
+footer {
+    text-align: center;
+    background-color: #333;
+    padding: 10px 0;
+}
+
+/* Media Query for Small Screens */
+@media (max-width: 768px) {
+    #balance-container {
+        top: 5%;
+        right: 3%;
+        max-width: 200px;
+        gap: 15px;
+    }
+
+    input#bet-amount {
+        width: 150px; /* Adjust input size for smaller screens */
+    }
+
+    #slot-results {
+        margin-top: 5%;
+        gap: 5px;  /* Reduce the gap between slot images */
+    }
+
+    .slot {
+        width: 50px;  /* Resize slots for mobile */
+        height: 50px;
+    }
+
+    #spin-button-container {
+        bottom: 5vh; /* Adjust bottom for small screens */
+    }
+
+    #spin-img {
+        width: 200px; /* Reduce the size of the spin button for small screens */
+    }
+}
